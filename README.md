@@ -1,14 +1,9 @@
 # TaskFlow — Sistema Web de Gestión de Tareas
 
 Aplicación web para gestionar tareas mediante operaciones CRUD, con autenticación
-de usuarios y almacenamiento en MySQL.
+de usuarios y almacenamiento en MySQL o SQLite.
 
 **Tecnologías:** PHP (PDO) · MySQL **o** SQLite · Bootstrap 5 · HTML/CSS · JavaScript.
-
-> 🌐 **Demo en línea (GitHub Pages):** existe una versión **estática** de la app en la
-> carpeta [`docs/`](docs), pensada solo para mostrar la interfaz y el flujo. Guarda los
-> datos en el navegador del visitante (`localStorage`), **no** es la app PHP real ni
-> tiene backend multiusuario. Ver [Demo estática para GitHub Pages](#demo-estática-para-github-pages).
 
 ---
 
@@ -61,8 +56,8 @@ TaskFlow/
 ## Instalación
 
 ### Requisitos
-- PHP 7.4 o superior (con extensión PDO MySQL).
-- MySQL 5.7+ o MariaDB 10.2+.
+- PHP 7.4 o superior con PDO (la extensión `pdo_sqlite` suele venir incluida).
+- Solo si usas MySQL: MySQL 5.7+ o MariaDB 10.2+ (con `pdo_mysql`).
 - Un servidor web. Lo más sencillo es **XAMPP**, **Laragon** o **MAMP**.
 
 ### Pasos
@@ -78,9 +73,9 @@ TaskFlow/
    con `DB_DRIVER` (`sqlite` por defecto, o `mysql`).
 
    **Opción SQLite (por defecto, no requiere servidor MySQL):**
-   - El repositorio **ya incluye** `database/taskflow.sqlite` con datos de
-     muestra, por lo que al clonar/descargar el proyecto **funciona al instante**:
-     solo abre `http://localhost/TaskFlow/`.
+   - El proyecto **ya incluye** `database/taskflow.sqlite` con datos de
+     muestra, por lo que **funciona al instante**: solo abre
+     `http://localhost/TaskFlow/`.
    - Si necesitas **recrear** la base de datos desde cero, abre
      `http://localhost/TaskFlow/setup_sqlite.php` en el navegador
      (o ejecuta `php setup_sqlite.php` en consola). Crea el archivo
@@ -109,35 +104,4 @@ TaskFlow/
 - Cada consulta de tareas filtra por `user_id`: un usuario no puede acceder a tareas de otro.
 
 > Nota de producción: si publicas el sitio bajo HTTPS, configura las cookies de
-> sesión como `secure`, y elimina `setup.php`.
-
----
-
-## Demo estática para GitHub Pages
-
-GitHub Pages **solo sirve archivos estáticos y no ejecuta PHP**, por lo que la app
-PHP real no puede alojarse ahí. Para tener una vitrina pública se incluye una
-**réplica estática** en la carpeta [`docs/`](docs), construida con HTML, Bootstrap 5
-y JavaScript puro. Reproduce la misma interfaz y el mismo flujo (login, dashboard,
-CRUD, búsqueda y filtros), pero guardando los datos en el navegador del visitante
-mediante `localStorage`.
-
-**Limitaciones de la demo** (por diseño, al no tener servidor):
-
-- Los datos viven solo en el navegador de cada visitante; no se comparten ni persisten en un servidor.
-- El "login" es simulado: no hay sesiones, hashing real ni protección CSRF/backend.
-- Trae datos de muestra precargados (cuentas `ana@taskflow.test` y `carlos@taskflow.test`, contraseña `password123`).
-
-### Cómo publicarla
-
-1. Sube el repositorio a GitHub.
-2. En GitHub: **Settings → Pages**.
-3. En *Build and deployment → Source* elige **Deploy from a branch**.
-4. Selecciona la rama (`main`) y la carpeta **`/docs`**. Guarda.
-5. Espera 1–2 minutos: la demo quedará en `https://<usuario>.github.io/<repositorio>/`.
-
-> Para **probarla localmente**: `cd docs && python3 -m http.server 4599`
-> y abre `http://localhost:4599/`.
-
-Para desplegar la **aplicación PHP real** (con base de datos compartida y multiusuario)
-necesitas un hosting que ejecute PHP (Render, Railway, Fly.io, hosting compartido o un VPS).
+> sesión como `secure`, y elimina `setup.php` y `setup_sqlite.php`.

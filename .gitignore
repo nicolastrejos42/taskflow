@@ -1,0 +1,28 @@
+# ── Ruido del sistema operativo y editores ──────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/
+
+# ── Artefactos locales ──────────────────────────────────────────────
+*.log
+
+# ── Base de datos SQLite ────────────────────────────────────────────
+# La BD de demo (database/taskflow.sqlite) SÍ se incluye en el repo a
+# propósito, para que al clonar/descargar el proyecto funcione al
+# instante con datos de muestra. Por eso NO está ignorada aquí.
+#
+# Si en el futuro prefieres NO versionar la base de datos (porque
+# acumula datos reales en cada commit), descomenta la línea siguiente y
+# ejecuta una vez  setup_sqlite.php  tras clonar para regenerarla:
+# database/taskflow.sqlite
+
+# Archivos temporales de SQLite (sí conviene ignorarlos siempre)
+database/*.sqlite-wal
+database/*.sqlite-shm
+database/*.sqlite-journal
+
+# Config local de herramientas (no versionar)
+.claude/

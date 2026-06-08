@@ -1,0 +1,31 @@
+/* TaskFlow - Estilos propios (demo estática, complementan a Bootstrap) */
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.card {
+    border-radius: .75rem;
+}
+
+.navbar-brand i {
+    vertical-align: -2px;
+}
+
+.table-hover tbody tr {
+    transition: background-color .12s ease-in-out;
+}
+
+.display-5 {
+    line-height: 1.1;
+}
+
+.list-group-item-action {
+    text-decoration: none;
+}

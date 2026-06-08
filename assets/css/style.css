@@ -1,0 +1,35 @@
+/* TaskFlow - Estilos propios (complementan a Bootstrap) */
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+/* Suaviza las tarjetas del dashboard */
+.card {
+    border-radius: .75rem;
+}
+
+.navbar-brand i {
+    vertical-align: -2px;
+}
+
+/* Transición sutil en filas de la tabla */
+.table-hover tbody tr {
+    transition: background-color .12s ease-in-out;
+}
+
+/* Evita que los números grandes del dashboard desborden en móvil */
+.display-5 {
+    line-height: 1.1;
+}
+
+/* Enlaces de la lista de tareas recientes sin subrayado molesto */
+.list-group-item-action {
+    text-decoration: none;
+}
